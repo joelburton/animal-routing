@@ -1,25 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import NavMenu from './NavMenu';
+import Panda from './Panda';
+import PenguinFinder from './PenguinFinder';
+import Puffin from './Puffin';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavMenu />
+      <Switch>
+
+        {/* Panda component searches params itself */}
+        <Route path="/pandas/:id">
+          <Panda />
+        </Route>
+
+        {/* PenguinFinder searches params, renders Penguin, passing prop */}
+        <Route path="/penguins/:id">
+          <PenguinFinder />
+        </Route>
+
+        {/* Puffin has no idea it's routed */}
+        <Route
+          path="/puffins/:id"
+          render={({ match, location, history }) =>
+            <Puffin id={match.params.id} />} />
+
+      </Switch>
+    </Router>
   );
 }
 

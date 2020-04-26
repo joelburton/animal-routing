@@ -1,68 +1,47 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React Router Patterns
+=====================
 
-## Available Scripts
+Depending on your code organization, you may (or may not!) with to have a
+component tied to routing.
 
-In the project directory, you can run:
+This app shows three possibilities:
 
-### `npm start`
+Pandas
+------
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Pandas are routed simply and the `Panda` component mixes together both the
+finding of the right id from the routing params, along with the presentation.
+This can be a good pattern for smaller/simpler apps, where the `Panda`
+component won't need to be re-used in other places.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Testing the `Panda` component does require that you mock a router, since
+the component cannot be used outside of routing.
 
-### `npm test`
+Penguins
+--------
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Penguins are routed simply---but not to the `Penguin` component! Instead, they
+are routed to the `PenguinFinder` component, which is a simple logical
+component with no presentation: it finds the id via the routing params, and
+renders the simple, pure-presentational `Penguin` component.
 
-### `npm run build`
+This allows you to use `Penguin` in other places, separating the
+routing-specific task of finding the id from the presentation.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Testing the `Penguin` presentational component is now simple.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Puffins
+-------
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Puffins are routed with a more complex feature---using the `render` attribute
+on their route. This is passed the `match`, `location`, and `history` props.
+Here, the routing itself finds the `match.params.id` with the id of the puffin
+to render, and renders the simple, presentational component by directly passing
+it a prop with the puffin to render.
 
-### `npm run eject`
+Similar to penguins, this lets us use the `Puffin` component in other places,
+separating the routing-specific task of finding the id from the presentation.
+It does it with a different approach, though---instead of putting that logic
+in a wrapper "PuffinFinder" component, it puts that logic in the route itself.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Testing the `Puffin` presentational component is now simple.
