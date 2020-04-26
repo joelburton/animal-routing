@@ -1,0 +1,7 @@
+digraph pandas {
+    graph [rankdir=LR]
+    node [shape=rect]
+    Route [label=<<b>Route</b>>]
+    Panda [label=<<b>Panda</b><br /><i>Find ID looking in params</i>>]
+    Route -> Panda
+}

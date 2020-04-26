@@ -1,0 +1,8 @@
+digraph penguins {
+    graph [rankdir=LR]
+    node [shape=rect]
+    Route [label=<<b>Route</b>>]
+    PenguinFinder [label=<<b>PenguinFinder</b><br /><i>Find ID looking in params</i>>]
+    Penguin [label=<<b>Penguin</b>>]
+    Route -> PenguinFinder -> Penguin
+}

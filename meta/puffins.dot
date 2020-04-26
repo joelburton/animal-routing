@@ -1,0 +1,7 @@
+digraph puffins {
+    graph [rankdir=LR]
+    node [shape=rect]
+    Route [label=<<b>Route</b><br /><i>Find ID looking in params</i>>]
+    Puffin [label=<<b>Puffin</b>>]
+    Route -> Puffin
+}
