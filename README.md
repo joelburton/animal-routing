@@ -10,7 +10,7 @@ animals.
 Pandas
 ------
 
-![Panda Components](./meta/pandas.png)
+![Panda Components](./meta/pandas.svg)
 
 Pandas are routed simply and the `Panda` component mixes together both the
 finding of the right id from the routing params, along with the presentation.
@@ -23,7 +23,7 @@ the component cannot be used outside of routing.
 Penguins
 --------
 
-![Penguin Components](./meta/penguins.png)
+![Penguin Components](./meta/penguins.svg)
 
 Penguins are routed simply—but not to the `Penguin` component! Instead, they
 are routed to the `PenguinFinder` component, which is a simple logical
@@ -38,7 +38,7 @@ Testing the `Penguin` presentational component is now simple.
 Puffins
 -------
 
-![Puffin Components](./meta/puffins.png)
+![Puffin Components](./meta/puffins.svg)
 
 Puffins are routed with a more complex feature—using the `render` attribute
 on their route. This is passed the `match`, `location`, and `history` props.
